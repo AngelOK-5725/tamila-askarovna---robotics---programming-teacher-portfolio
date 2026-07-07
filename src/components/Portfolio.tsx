@@ -14,13 +14,13 @@ export default function Portfolio() {
       id: 'wedo-robot',
       category: 'robots',
       titleKey: 'wedoRobot',
-      imageUrl: 'src/assets/images/sortirov.webp',
+      imageUrl: '/images/sortirov.webp',
     },
     {
       id: 'ev3-robot',
       category: 'robots',
       titleKey: 'ev3Robot',
-      imageUrl: 'src/assets/images/sumo.webp',
+      imageUrl: '/images/sumo.webp',
     },
     {
       id: 'roblox-runner',

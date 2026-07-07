@@ -2,7 +2,7 @@ import { Terminal, Gamepad2, Blocks, Cpu, Laptop, GraduationCap, ChevronRight, M
 import { motion } from 'motion/react';
 import { useApp } from './AppContext';
 
-const portraitImg = "/src/assets/images/tamila.jpg";
+const portraitImg = "/images/tamila.jpg";
 
 export default function Hero() {
   const { t, language } = useApp();
