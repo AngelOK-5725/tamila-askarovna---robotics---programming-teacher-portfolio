@@ -1,11 +1,25 @@
 import { Terminal, Gamepad2, Blocks, Cpu, Laptop, GraduationCap, ChevronRight, MessageSquare, Award, Users, BookOpen } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useApp } from './AppContext';
+import { useEffect, useState } from 'react';
 
 const portraitImg = "/images/tamila.jpg";
 
+function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(false);
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    if (media.matches !== matches) setMatches(media.matches);
+    const listener = () => setMatches(media.matches);
+    media.addEventListener('change', listener);
+    return () => media.removeEventListener('change', listener);
+  }, [query, matches]);
+  return matches;
+}
+
 export default function Hero() {
   const { t, language } = useApp();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const stats = [
     {
@@ -28,7 +42,8 @@ export default function Hero() {
     },
   ];
 
-  const floatingIcons = [
+  // Десктопные координаты (без изменений)
+  const desktopIcons = [
     { icon: Terminal, label: 'Python', dotColor: 'bg-blue-500', delay: 0, x: -120, y: -160 },
     { icon: Gamepad2, label: 'Roblox', dotColor: 'bg-orange-500', delay: 1, x: 140, y: -140 },
     { icon: Blocks, label: 'LEGO WeDo', dotColor: 'bg-green-500', delay: 2, x: -150, y: 40 },
@@ -37,13 +52,24 @@ export default function Hero() {
     { icon: GraduationCap, label: 'STEM', dotColor: 'bg-purple-500', delay: 2.5, x: 100, y: 200 },
   ];
 
+  // Мобильные координаты – разнесены по кругу, нижние подняты, чтобы не задеть карточку на фото
+  const mobileIcons = [
+    { icon: Terminal, label: 'Python', dotColor: 'bg-blue-500', delay: 0, x: -120, y: -140 },
+    { icon: Gamepad2, label: 'Roblox', dotColor: 'bg-orange-500', delay: 1, x: 30, y: -120 },
+    { icon: Blocks, label: 'LEGO WeDo', dotColor: 'bg-green-500', delay: 2, x: -140, y: 10 },
+    { icon: Cpu, label: 'EV3', dotColor: 'bg-red-500', delay: 1.5, x: 70, y: -40 },
+    { icon: Laptop, label: 'Web Design', dotColor: 'bg-cyan-500', delay: 0.5, x: -100, y: 120 },
+    { icon: GraduationCap, label: 'STEM', dotColor: 'bg-purple-500', delay: 2.5, x: 30, y: 90 },
+  ];
+
+  const floatingIcons = isMobile ? mobileIcons : desktopIcons;
+
   const handleScrollTo = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       const offset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - offset;
-      
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
@@ -221,7 +247,9 @@ export default function Hero() {
                 }}
               >
                 <motion.div
-                  className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700/80 shadow-md text-slate-800 dark:text-slate-100 cursor-pointer"
+                  className={`flex items-center space-x-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700/80 shadow-md text-slate-800 dark:text-slate-100 cursor-pointer ${
+                    isMobile ? 'px-2 py-1 text-xs' : 'px-4 py-2'
+                  }`}
                   whileHover={{ 
                     scale: 1.05,
                     y: badge.y - 10,
@@ -240,7 +268,7 @@ export default function Hero() {
                 >
                   <span className={`w-2 h-2 rounded-full ${badge.dotColor}`} />
                   <Icon className="w-4 h-4 text-slate-500" />
-                  <span className="text-xs font-semibold tracking-wide font-sans">{badge.label}</span>
+                  <span className="font-semibold tracking-wide font-sans">{badge.label}</span>
                 </motion.div>
               </motion.div>
             );

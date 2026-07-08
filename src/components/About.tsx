@@ -24,12 +24,12 @@ export default function About() {
   ];
 
   const timelineEvents = [
-    {
-      year: '2005',
-      title: language === 'ru' ? 'Рождение' : 'Дүниеге келуі',
-      desc: language === 'ru' ? 'Родилась в Республике Казахстан' : 'Қазақстан Республикасында дүниеге келді',
-      status: 'completed',
-    },
+    // {
+    //   year: '2005',
+    //   title: language === 'ru' ? 'Рождение' : 'Дүниеге келуі',
+    //   desc: language === 'ru' ? 'Родилась в Республике Казахстан' : 'Қазақстан Республикасында дүниеге келді',
+    //   status: 'completed',
+    // },
     {
       year: '2021',
       title: language === 'ru' ? 'Начало пути в IT' : 'IT саласындағы жолдың басталуы',

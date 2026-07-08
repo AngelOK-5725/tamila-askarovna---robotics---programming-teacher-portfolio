@@ -214,10 +214,10 @@ export default function Contact() {
               </span>
               <div className="flex items-center justify-center space-x-4">
                 {[
-                  { icon: MessageCircle, url: 'https://t.me/tamila_askarovna', color: 'hover:bg-sky-500 hover:text-white text-sky-500 border-sky-500/20' },
-                  { icon: Phone, url: 'https://wa.me/77771234567', color: 'hover:bg-emerald-500 hover:text-white text-emerald-500 border-emerald-500/20' },
-                  { icon: Instagram, url: 'https://instagram.com/tamila_robotics', color: 'hover:bg-pink-500 hover:text-white text-pink-500 border-pink-500/20' },
-                  { icon: Github, url: 'https://github.com/tamila-programmer', color: 'hover:bg-slate-800 hover:text-white text-slate-700 dark:text-slate-300 border-slate-500/20' },
+                  { icon: MessageCircle, url: 'https://t.me/Amidamn', color: 'hover:bg-sky-500 hover:text-white text-sky-500 border-sky-500/20' },
+                  { icon: Phone, url: 'https://wa.me/77051334565', color: 'hover:bg-emerald-500 hover:text-white text-emerald-500 border-emerald-500/20' },
+                  { icon: Instagram, url: 'https://instagram.com/InGear_studi', color: 'hover:bg-pink-500 hover:text-white text-pink-500 border-pink-500/20' },
+                  { icon: Github, url: 'https://github.com/AngelOK-5725', color: 'hover:bg-slate-800 hover:text-white text-slate-700 dark:text-slate-300 border-slate-500/20' },
                 ].map((soc, idx) => {
                   const Icon = soc.icon;
                   return (
